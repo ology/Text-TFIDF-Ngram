@@ -20,17 +20,17 @@ Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
 =head1 SYNOPSIS
 
   use Text::TFIDF::Ngram;
-  my @files = [qw( foo.txt bar.txt )];
-  my $obj   = Text::TFIDF::Ngram->new(
-    files     => \@files,
+  my $obj = Text::TFIDF::Ngram->new(
+    files     => [qw( foo.txt bar.txt )],
     size      => 3,
     stopwords => 1,
   );
-  my $x = $obj->tf( 'foo.txt', 'foo' );
-  $x = $obj->idf('foo');
-  $x = $obj->tfidf( 'foo.txt', 'foo' );
-  $x = $obj->tfidf_by_file;
-  print Dumper $x;
+  my $w = $obj->tf( 'foo.txt', 'foo' );
+  my $x = $obj->idf('foo');
+  my $y = $obj->tfidf( 'foo.txt', 'foo' );
+  printf "TF: %.3f, IDF: %.3f, TFIDF: %.3f\n", $w, $x, $y;
+  my $z = $obj->tfidf_by_file;
+  print Dumper $z;
 
 =head1 DESCRIPTION
 
