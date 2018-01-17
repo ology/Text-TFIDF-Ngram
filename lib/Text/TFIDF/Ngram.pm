@@ -128,7 +128,8 @@ sub _process_ngrams {
     my $hash;
 
     for my $p ( keys %$phrase ) {
-#        next if $self->stopwords && grep { $stop->{$_} } split /\s/, $p;  # Exclude stopwords
+        next if $self->stopwords
+            && grep { $stop->{$_} } split /\s/, $p;  # Exclude stopwords
 
         $p =~ s/[\-?;:!,."\(\)]//g; # Remove unwanted punctuation
 
