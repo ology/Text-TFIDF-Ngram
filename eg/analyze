@@ -13,9 +13,8 @@ my $phrase = shift || '';
 my @files = File::Find::Rule->file()->name('*.txt')->in($dir);
 
 my $t = Text::TFIDF::Ngram->new(
-    files     => \@files,
-    size      => $size,
-    stopwords => 1,
+    files => \@files,
+    size  => $size,
 );
 
 if ( $top ) {
