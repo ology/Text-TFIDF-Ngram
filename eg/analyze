@@ -5,10 +5,10 @@ use warnings;
 use File::Find::Rule;
 use Text::TFIDF::Ngram;
 
-my $dir  = shift || die "Usage: perl $0 /some/corpus size top phrase";
-my $size = shift || 2;
-my $top  = shift || 0;
-my $word = shift || '';
+my $dir    = shift || die "Usage: perl $0 /some/corpus size top phrase";
+my $size   = shift || 2;
+my $top    = shift || 0;
+my $phrase = shift || '';
 
 my @files = File::Find::Rule->file()->name('*.txt')->in($dir);
 
@@ -28,15 +28,15 @@ if ( $top ) {
         print "$i. File: $file\n";
 
         my $n = 0;
-        for my $word ( sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} } ) {
+        for my $p ( sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} } ) {
             last if ++$n > $top;
-            print "\t$n. $word = ", $x->{$file}{$word}, "\n";
+            print "\t$n. $p = ", $x->{$file}{$p}, "\n";
         }
     }
 }
 
-if ( $word ) {
-    print "Word: '$word' IDF: ", $t->idf($word), "\n";
+if ( $phrase ) {
+    print "Word: '$phrase' IDF: ", $t->idf($phrase), "\n";
 
     my $i = 0;
     for my $file ( @{ $t->files } ) {
@@ -44,9 +44,9 @@ if ( $word ) {
 
         print "$i. File: $file\n";
 
-        print "\tTF: ", $t->tf( $file, $word ), "\n";
+        print "\tTF: ", $t->tf( $file, $phrase ), "\n";
 
-        my $tfidf = $t->tfidf( $file, $word );
+        my $tfidf = $t->tfidf( $file, $phrase );
         print "\tTF-IDF: $tfidf\n" if $tfidf;
     }
 }
