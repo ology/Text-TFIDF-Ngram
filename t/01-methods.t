@@ -145,4 +145,28 @@ $expected = 0.033;
 $x = sprintf '%.3f', $obj->tfidf( $filename, $term );
 is $x, $expected, 'TFIDF';
 
+$files = [qw( t/1.txt t/2.txt )];
+
+$obj = Text::TFIDF::Ngram->new( files => $files, size => 1, stopwords => 1 );
+isa_ok $obj, 'Text::TFIDF::Ngram';
+
+$filename = 't/1.txt';
+$term     = 'sample';
+
+$expected = 1;
+$x = $obj->tf( $filename, $term );
+is $x, $expected, 'TF';
+
+$expected = 0.301;
+$x = sprintf '%.3f', $obj->idf($term);
+is $x, $expected, 'IDF';
+
+$expected = 0.301;
+$x = sprintf '%.3f', $obj->tfidf( $filename, $term );
+is $x, $expected, 'TFIDF';
+
+$expected = { sample => 1, };
+$x = $obj->counts->{$filename};
+is_deeply $x, $expected, 'counts';
+
 done_testing();
