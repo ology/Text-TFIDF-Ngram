@@ -13,11 +13,14 @@ isa_ok $obj, 'Text::TFIDF::Ngram';
 my $x = $obj->files;
 is $x, undef, 'no files';
 
+$x = $obj->stopwords;
+is $x, 1, 'stopwords';
+
 # https://en.wikipedia.org/wiki/Tf%E2%80%93idf#Example_of_tf%E2%80%93idf
 
 my $files = [qw( t/1.txt t/2.txt )];
 
-$obj = Text::TFIDF::Ngram->new( files => $files, size => 1 );
+$obj = Text::TFIDF::Ngram->new( files => $files, size => 1, stopwords => 0 );
 isa_ok $obj, 'Text::TFIDF::Ngram';
 
 my $expected = $files;
