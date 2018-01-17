@@ -9,7 +9,6 @@ use strictures 2;
 use namespace::clean;
 
 use Carp;
-use Encode;
 use Lingua::EN::Ngram;
 use Lingua::StopWords qw( getStopWords );
 use List::Util qw( sum0 );
