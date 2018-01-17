@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.02';
+our $VERSION = '0.0201';
 
 use Moo;
 use strictures 2;
@@ -12,10 +12,6 @@ use Carp;
 use Lingua::EN::Ngram;
 use Lingua::StopWords qw( getStopWords );
 use List::Util qw( sum0 );
-
-=head1 NAME
-
-Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
 
 =head1 SYNOPSIS
 
