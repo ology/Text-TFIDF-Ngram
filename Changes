@@ -1,6 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - 
+
+0.02 2018-01-16 19:12:16
     - Added stopwords feature and tests.
     - Improved documentation.
 
