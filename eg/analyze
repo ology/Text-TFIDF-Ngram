@@ -7,10 +7,10 @@ use Text::TFIDF::Ngram;
 
 my $usage = "Usage: perl $0 /some/corpus size top phrase";
 
-my $dir  = shift || die $usage; # ~/Documents/lit/Sherlock-Holmes
+my $dir  = shift || die $usage;
 my $size = shift || 2;
 my $top  = shift || 0;
-my $word = shift || ''; # sherlock
+my $word = shift || '';
 
 my @files = File::Find::Rule->file()->name('*.txt')->in($dir);
 
@@ -49,3 +49,7 @@ if ( $word ) {
         print "\tTF-IDF: $tfidf\n" if $tfidf;
     }
 }
+
+__END__
+!perl % ~/Documents/lit/inaugural/ 2 5
+!perl % ~/Documents/lit/inaugural/ 2 0 'public good'
