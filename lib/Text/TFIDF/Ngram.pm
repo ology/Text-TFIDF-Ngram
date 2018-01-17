@@ -31,7 +31,7 @@ Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
   $x = $obj->idf('foo');
   $x = $obj->tfidf( 'foo.txt', 'foo' );
   $x = $obj->tfidf_by_file;
-  print Dumper $tfidf;
+  print Dumper $x;
 
 =head1 DESCRIPTION
 
