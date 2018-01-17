@@ -40,8 +40,11 @@ if ( $top ) {
 if ( $word ) {
     print "Word: '$word' IDF: ", $t->idf($word), "\n";
 
+    my $i = 0;
     for my $file ( @{ $t->files } ) {
-        print "File: $file\n";
+        $i++;
+
+        print "$i. File: $file\n";
 
         print "\tTF: ", $t->tf( $file, $word ), "\n";
 
