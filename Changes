@@ -1,0 +1,5 @@
+Revision history for Text-TFIDF-Ngram
+
+{{$NEXT}}
+    - Minted by Dist::Zilla.
+    - Imported some funtionality from Text::IFIDF.
