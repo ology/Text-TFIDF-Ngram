@@ -73,7 +73,8 @@ has stopwords => (
 
 =head2 counts
 
-HashRef of the ngram counts of each processed file.
+HashRef of the ngram counts of each processed file.  This is a computed
+attribute - providing it in the constructor will be ignored.
 
 =cut
 
@@ -186,8 +187,8 @@ sub idf {
 
   $tfidf = $obj->tfidf( $file, $phrase );
 
-Computes the TF-IDF weight for the given document and word.  If the file is not
-in the corpus used to populate the module, undef is returned.
+Computes the TF-IDF weight for the given document B<file> and B<phrase>.  If the
+phrase is not in the corpus, a warning is issued and undef is returned.
 
 =cut
 
