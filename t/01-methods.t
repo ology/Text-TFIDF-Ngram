@@ -169,4 +169,30 @@ $expected = { sample => 1, };
 $x = $obj->counts->{$filename};
 is_deeply $x, $expected, 'counts';
 
+$obj = Text::TFIDF::Ngram->new( files => $files, size => 2, stopwords => 0 );
+isa_ok $obj, 'Text::TFIDF::Ngram';
+
+$term = 'a sample';
+
+$expected = 0.25;
+$x = $obj->tf( $filename, $term );
+is $x, $expected, 'TF';
+
+$expected = 0.301;
+$x = sprintf '%.3f', $obj->idf($term);
+is $x, $expected, 'IDF';
+
+$expected = 0.075;
+$x = sprintf '%.3f', $obj->tfidf( $filename, $term );
+is $x, $expected, 'TFIDF';
+
+$expected = {
+    'this is'  => 1,
+    'is a'     => 1,
+    'a a'      => 1,
+    'a sample' => 1,
+};
+$x = $obj->counts->{$filename};
+is_deeply $x, $expected, 'counts';
+
 done_testing();
