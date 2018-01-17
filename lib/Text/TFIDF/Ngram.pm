@@ -20,7 +20,9 @@ Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
 =head1 SYNOPSIS
 
   use Text::TFIDF::Ngram;
-  my $obj = Text::TFIDF::Ngram->new( files => \@files, size => $size );
+  my @files = [qw( foo.txt bar.txt )];
+  my $size  = 3;
+  my $obj   = Text::TFIDF::Ngram->new( files => \@files, size => $size );
   my $tfidf = $obj->tfidf_by_file;
   print Dumper $tfidf;
 
