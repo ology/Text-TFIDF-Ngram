@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Moo;
 use strictures 2;
@@ -11,6 +11,7 @@ use namespace::clean;
 use Carp;
 use Encode;
 use Lingua::EN::Ngram;
+use Lingua::StopWords qw( getStopWords );
 use List::Util qw( sum0 );
 
 =head1 NAME
@@ -21,8 +22,11 @@ Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
 
   use Text::TFIDF::Ngram;
   my @files = [qw( foo.txt bar.txt )];
-  my $size  = 3;
-  my $obj   = Text::TFIDF::Ngram->new( files => \@files, size => $size );
+  my $obj   = Text::TFIDF::Ngram->new(
+    files     => \@files,
+    size      => 3,
+    stopwords => 1,
+  );
   my $tfidf = $obj->tfidf_by_file;
   print Dumper $tfidf;
 
@@ -55,6 +59,18 @@ has size => (
     is      => 'ro',
     isa     => sub { croak 'Invalid integer' unless $_[0] && $_[0] =~ /^\d+$/ && $_[0] > 0 },
     default => sub { 2 },
+);
+
+=head2 stopwords
+
+Boolean indicating that phrases with stopwords will be ignored.  Default is 1.
+
+=cut
+
+has stopwords => (
+    is      => 'ro',
+    isa     => sub { croak 'Invalid Boolean' unless defined $_[0] },
+    default => sub { 1 },
 );
 
 =head2 counts
@@ -103,9 +119,13 @@ sub _process_ngrams {
     my $ngram  = Lingua::EN::Ngram->new( file => $file );
     my $phrase = $ngram->ngram($size);
 
+    my $stop = getStopWords('en');
+
     my $hash;
 
     for my $p ( keys %$phrase ) {
+#        next if $self->stopwords && grep { $stop->{$_} } split /\s/, $p;  # Exclude stopwords
+
         $p =~ s/[\-?;:!,."\(\)]//g; # Remove unwanted punctuation
 
         # XXX Why are there are blanks in the returned phrases??
