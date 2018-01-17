@@ -1,5 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Added stopwords feature and tests.
+    - Improved documentation.
+
+0.01 2018-01-16 17:01:35
     - Minted by Dist::Zilla.
     - Imported some funtionality from Text::IFIDF.
