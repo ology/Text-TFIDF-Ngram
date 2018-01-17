@@ -179,7 +179,7 @@ sub tfidf {
 
   $tfidf = $obj->tfidf_by_file;
 
-Construct a HashRef of all files with all terms and their B<TFIDF> values.
+Construct a HashRef of all files with all terms and their B<tfidf> values.
 
 =cut
 
