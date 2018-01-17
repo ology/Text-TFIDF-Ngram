@@ -187,8 +187,8 @@ sub idf {
 
   $tfidf = $obj->tfidf( $file, $phrase );
 
-Computes the TF-IDF weight for the given document B<file> and B<phrase>.  If the
-phrase is not in the corpus, a warning is issued and undef is returned.
+Computes the TF-IDF weight for the given B<file> and B<phrase>.  If the phrase
+is not in the corpus, a warning is issued and undef is returned.
 
 =cut
 
@@ -203,7 +203,7 @@ sub tfidf {
 
   $tfidf = $obj->tfidf_by_file;
 
-Construct a HashRef of all files with all terms and their B<tfidf> values.
+Construct a HashRef of all files with all phrases and their B<tfidf> values.
 
 =cut
 
