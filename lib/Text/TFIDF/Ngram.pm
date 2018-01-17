@@ -27,7 +27,10 @@ Text::TFIDF::Ngram - Compute the TF-IDF measure for ngram phrases
     size      => 3,
     stopwords => 1,
   );
-  my $tfidf = $obj->tfidf_by_file;
+  my $x = $obj->tf( 'foo.txt', 'foo' );
+  $x = $obj->idf('foo');
+  $x = $obj->tfidf( 'foo.txt', 'foo' );
+  $x = $obj->tfidf_by_file;
   print Dumper $tfidf;
 
 =head1 DESCRIPTION
