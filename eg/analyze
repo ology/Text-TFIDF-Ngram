@@ -5,7 +5,7 @@ use warnings;
 use File::Find::Rule;
 use Text::TFIDF::Ngram;
 
-my $usage = "Usage: perl $0 /some/where size top term";
+my $usage = "Usage: perl $0 /some/corpus size top phrase";
 
 my $dir  = shift || die $usage; # ~/Documents/lit/Sherlock-Holmes
 my $size = shift || 2;
