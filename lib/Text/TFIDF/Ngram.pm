@@ -88,7 +88,11 @@ has counts => (
 
 =head2 new
 
-  $obj = Text::TFIDF::Ngram->new( files => \@files, size => $size );
+  $obj = Text::TFIDF::Ngram->new(
+    files     => \@files,
+    size      => $size,
+    stopwords => $stopwords,
+  );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
 in, populates the object using those files.
