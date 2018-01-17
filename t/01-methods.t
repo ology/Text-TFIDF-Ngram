@@ -113,7 +113,7 @@ is_deeply $x, $expected, 'tfidf_by_file';
 
 $files = [qw( t/3.txt t/4.txt )];
 
-$obj = Text::TFIDF::Ngram->new( files => $files, size => 2 );
+$obj = Text::TFIDF::Ngram->new( files => $files, size => 2, stopwords => 0 );
 isa_ok $obj, 'Text::TFIDF::Ngram';
 
 $filename = 't/3.txt';
