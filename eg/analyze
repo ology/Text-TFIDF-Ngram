@@ -23,8 +23,11 @@ my $t = Text::TFIDF::Ngram->new(
 if ( $top ) {
     my $x = $t->tfidf_by_file();
 
-    for my $file ( keys %$x ) {
-        print "File: $file\n";
+    my $i = 0;
+    for my $file ( sort keys %$x ) {
+        $i++;
+
+        print "$i. File: $file\n";
 
         my $n = 0;
         for my $word ( sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} } ) {
