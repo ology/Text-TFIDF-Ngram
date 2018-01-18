@@ -34,6 +34,9 @@ The TF-IDF ("term frequency-inverse document frequency") measure is used in
 information retrieval and text mining.  It is a statistical measure used to see
 how important a word is in a document or collection of documents.
 
+For a full example program, please see the F<eg/analyze> file in the
+distribution.
+
 =head1 ATTRIBUTES
 
 =head2 files
