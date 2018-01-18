@@ -94,7 +94,7 @@ has counts => (
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
-in the ngrams in each file is stored.
+in, the ngrams of each file is stored.
 
 =head2 BUILD
 
