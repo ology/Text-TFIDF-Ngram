@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.0203';
+our $VERSION = '0.0204';
 
 use Moo;
 use strictures 2;
@@ -136,6 +136,9 @@ sub _process_ngrams {
         # XXX Why are there are blanks in the returned phrases??
         my @p = grep { $_ } split /\s/, $p;
         next unless @p == $size;
+
+        # Skip a lone single quote (allowed above)
+        next if grep { $_ eq "'" } @p;
 
         $hash->{$p} = $phrase->{$p};
     }
