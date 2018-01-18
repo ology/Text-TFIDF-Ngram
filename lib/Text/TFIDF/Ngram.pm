@@ -234,8 +234,14 @@ __END__
 
 =head1 SEE ALSO
 
-L<Moo>
-
 L<https://en.wikipedia.org/wiki/Tf%E2%80%93idf>
+
+L<Lingua::EN::Ngram>
+
+L<Lingua::StopWords>
+
+L<List::Util>
+
+L<Moo>
 
 =cut
