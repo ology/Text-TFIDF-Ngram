@@ -1,7 +1,8 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
-    - Fixed distribution name in bugs and repo links.
+    - Fixed the distribution name in the bugs and repo links.
+    - Specify the minimum version of List::Util to use.
 
 0.0201 2018-01-16 21:44:49
     - Improved documentation.
