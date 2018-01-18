@@ -54,4 +54,4 @@ if ( $phrase ) {
 
 __END__
 !perl % ~/Documents/lit/inaugural/ 2 5
-!perl % ~/Documents/lit/inaugural/ 2 0 'public good'
+!perl % ~/Documents/lit/inaugural/ 2 0 1 'public good'
