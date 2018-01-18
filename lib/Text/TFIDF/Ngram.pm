@@ -94,7 +94,7 @@ has counts => (
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
-in, populates the object using those files.
+in the ngrams in each file is stored.
 
 The B<size> is the number of words in an ngram phrase and defaults to 2.
 
