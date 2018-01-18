@@ -49,14 +49,14 @@ has files => (
 
 =head2 size
 
-Integer ngram phrase size.
+Integer ngram phrase size.  Default is 1.
 
 =cut
 
 has size => (
     is      => 'ro',
     isa     => sub { croak 'Invalid integer' unless $_[0] && $_[0] =~ /^\d+$/ && $_[0] > 0 },
-    default => sub { 2 },
+    default => sub { 1 },
 );
 
 =head2 stopwords
@@ -95,8 +95,6 @@ has counts => (
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
 in the ngrams in each file is stored.
-
-The B<size> is the number of words in an ngram phrase and defaults to 2.
 
 =head2 BUILD
 
