@@ -1,7 +1,7 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
-    - 
+    - Fixed distribution name in bugs and repo links.
 
 0.0201 2018-01-16 21:44:49
     - Improved documentation.
