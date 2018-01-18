@@ -5,7 +5,7 @@ use warnings;
 use File::Find::Rule;
 use Text::TFIDF::Ngram;
 
-my $dir    = shift || die "Usage: perl $0 /some/corpus size top phrase";
+my $dir    = shift || die "Usage: perl $0 /some/corpus size top stopwords phrase";
 my $size   = shift || 2;
 my $top    = shift // 0;
 my $stop   = shift // 1;
