@@ -7,14 +7,16 @@ use Text::TFIDF::Ngram;
 
 my $dir    = shift || die "Usage: perl $0 /some/corpus size top phrase";
 my $size   = shift || 2;
-my $top    = shift || 0;
+my $top    = shift // 0;
+my $stop   = shift // 1;
 my $phrase = shift || '';
 
 my @files = File::Find::Rule->file()->name('*.txt')->in($dir);
 
 my $t = Text::TFIDF::Ngram->new(
-    files => \@files,
-    size  => $size,
+    files     => \@files,
+    size      => $size,
+    stopwords => $stop,
 );
 
 if ( $top ) {
