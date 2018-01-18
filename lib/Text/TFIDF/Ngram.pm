@@ -86,6 +86,18 @@ has counts => (
     init_arg => undef,
 );
 
+=head2 tfidf_by_file
+
+HashRef of the TF-IDF values in each processed file.  This is a computed
+attribute - providing it in the constructor will be ignored.
+
+=cut
+
+has tfidf_by_file => (
+    is       => 'ro',
+    init_arg => undef,
+);
+
 =head1 METHODS
 
 =head2 new
