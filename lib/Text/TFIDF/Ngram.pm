@@ -21,9 +21,9 @@ use List::Util qw( sum0 );
     size      => 3,
     stopwords => 1,
   );
-  my $w = $obj->tf( 'foo.txt', 'foo' );
+  my $w = $obj->tf( 'foo.txt', 'foo bar baz' );
   my $x = $obj->idf('foo');
-  my $y = $obj->tfidf( 'foo.txt', 'foo' );
+  my $y = $obj->tfidf( 'foo.txt', 'foo bar baz' );
   printf "TF: %.3f, IDF: %.3f, TFIDF: %.3f\n", $w, $x, $y;
   my $z = $obj->tfidf_by_file;
   print Dumper $z;
