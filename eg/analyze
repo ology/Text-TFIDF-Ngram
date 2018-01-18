@@ -19,6 +19,7 @@ my $t = Text::TFIDF::Ngram->new(
     stopwords => $stop,
 );
 
+# If the top phrases is requested...
 if ( $top ) {
     my $x = $t->tfidf_by_file();
 
@@ -36,6 +37,7 @@ if ( $top ) {
     }
 }
 
+# If an analysis of a single phrase is requested...
 if ( $phrase ) {
     print "Word: '$phrase' IDF: ", $t->idf($phrase), "\n";
 
