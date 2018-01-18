@@ -1,6 +1,10 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Skip the token-allowed, lone single quote when processing ngrams.
+    - Fix the eg/analyze program slightly.
+
+0.0203 2018-01-17 19:53:18
     - Improved documentation.
     - Added a handy MANIFEST.SKIP!
 
