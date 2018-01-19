@@ -43,11 +43,11 @@ if ( $phrase ) {
 
     my $i = 0;
     for my $file ( @{ $t->files } ) {
-        $i++;
-
         my $tf = $t->tf( $file, $phrase );
 
         if ( $tf ) {
+            $i++;
+
             print "$i. File: $file\n";
 
             print "\tTF: ", $t->tf( $file, $phrase ), "\n";
