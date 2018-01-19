@@ -45,12 +45,16 @@ if ( $phrase ) {
     for my $file ( @{ $t->files } ) {
         $i++;
 
-        print "$i. File: $file\n";
+        my $tf = $t->tf( $file, $phrase );
 
-        print "\tTF: ", $t->tf( $file, $phrase ), "\n";
+        if ( $tf ) {
+            print "$i. File: $file\n";
 
-        my $tfidf = $t->tfidf( $file, $phrase );
-        print "\tTF-IDF: $tfidf\n" if $tfidf;
+            print "\tTF: ", $t->tf( $file, $phrase ), "\n";
+
+            my $tfidf = $t->tfidf( $file, $phrase );
+            print "\tTF-IDF: $tfidf\n" if $tfidf;
+        }
     }
 }
 
