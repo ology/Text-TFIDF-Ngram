@@ -42,7 +42,9 @@ if ( $top ) {
 
 # If an analysis of a single phrase is requested...
 if ( $phrase ) {
-    printf "Phrase: '%s', IDF = %.10f\n", $phrase, $t->idf($phrase);
+    my $idf = $t->idf($phrase);
+    printf "Phrase: '%s', IDF = %.10f\n", $phrase, $idf
+        if $idf;
 
     my $i = 0;
     for my $file ( @{ $t->files } ) {
