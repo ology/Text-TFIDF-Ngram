@@ -86,14 +86,14 @@ has counts => (
     init_arg => undef,
 );
 
-=head2 tfidf_by_file
+=head2 file_tfidf
 
 HashRef of the TF-IDF values in each processed file.  This is a computed
 attribute - providing it in the constructor will be ignored.
 
 =cut
 
-has tfidf_by_file => (
+has file_tfidf => (
     is       => 'ro',
     init_arg => undef,
 );
@@ -234,11 +234,11 @@ sub tfidf_by_file {
 
             next if $seen{$word}++ || !defined $tfidf;
 
-            $self->{tfidf_by_file}{$file}{$word} = $tfidf;
+            $self->{file_tfidf}{$file}{$word} = $tfidf;
         }
     }
 
-    return $self->{tfidf_by_file};
+    return $self->{file_tfidf};
 }
 
 1;
