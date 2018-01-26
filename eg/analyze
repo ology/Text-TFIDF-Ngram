@@ -10,14 +10,16 @@ my $size   = shift || 2;
 my $top    = shift // 0;
 my $stop   = shift // 1;
 my $phrase = shift || '';
+my $type   = shift || 'txt';
 
-my @files = File::Find::Rule->file()->name('*.txt')->in($dir);
+my @files = File::Find::Rule->file()->name( '*.' . $type )->in($dir);
 
 my $t = Text::TFIDF::Ngram->new(
     files     => \@files,
     size      => $size,
     stopwords => $stop,
 );
+#use Data::Dumper;warn(__PACKAGE__,' L',__LINE__,". MARK: ",Dumper$t->counts);
 
 # If the top phrases is requested...
 if ( $top ) {
