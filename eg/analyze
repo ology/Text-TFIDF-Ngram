@@ -19,7 +19,6 @@ my $t = Text::TFIDF::Ngram->new(
     size      => $size,
     stopwords => $stop,
 );
-#use Data::Dumper;warn(__PACKAGE__,' L',__LINE__,". MARK: ",Dumper$t->counts);
 
 # If the top phrases is requested...
 if ( $top ) {
