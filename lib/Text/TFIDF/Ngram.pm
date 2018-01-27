@@ -135,7 +135,7 @@ sub _process_ngrams {
 
     my $stop = getStopWords('en');
 
-    my $hash;
+    my $counts;
 
     for my $p ( keys %$phrase ) {
         next if $self->stopwords
@@ -150,10 +150,10 @@ sub _process_ngrams {
         # Skip a lone single quote (allowed above)
         next if grep { $_ eq "'" } @p;
 
-        $hash->{$p} = $phrase->{$p};
+        $counts->{$p} = $phrase->{$p};
     }
 
-	$self->{counts}{$file} = $hash;
+	$self->{counts}{$file} = $counts;
 }
 
 =head2 tf
