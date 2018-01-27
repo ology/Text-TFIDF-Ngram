@@ -1,7 +1,8 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
-    - Improved the eg/analyze program.
+    - Improved the eg/analyze program significantly.
+    - Improved documentation.
 
 0.0205 2018-01-18 15:21:20
     - Improved documentation.
