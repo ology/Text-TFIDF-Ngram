@@ -28,7 +28,7 @@ GetOptions( \%opts,
     'man',
 ) or pod2usage(2);
 
-pod2usage(1) if $opts{help};
+pod2usage(1) if $opts{help} || !$opts{dir};
 pod2usage( -exitval => 0, -verbose => 2 ) if $opts{man};
 
 my @files = File::Find::Rule->file()->name( '*.' . $opts{type} )->in($opts{dir});
