@@ -143,7 +143,7 @@ sub _process_ngrams {
 
         $p =~ s/[\-?;:!,."\(\)]//g; # Remove unwanted punctuation
 
-        # XXX Why are there are blanks in the returned phrases??
+        # XXX Why are there blanks in the returned phrases??
         my @p = grep { $_ } split /\s/, $p;
         next unless @p == $size;
 
