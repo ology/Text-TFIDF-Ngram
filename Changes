@@ -1,6 +1,8 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+
+0.0207 2018-04-08 21:04:31
     - Set distribution dependency prerequisites.
     - Fix case sensitivity in test output from Lingua::EN::Ngram.
 
