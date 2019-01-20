@@ -27,7 +27,7 @@ GetOptions( \%opts,
     'phrase=s',
     'type=s',
     'punc=s',
-    'lc=i',
+    'lc',
     'help|?',
     'man',
 ) or pod2usage(2);
