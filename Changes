@@ -1,6 +1,7 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Add a user defined punctuation pattern attribute.
 
 0.0207 2018-04-08 21:04:31
     - Set distribution dependency prerequisites.
