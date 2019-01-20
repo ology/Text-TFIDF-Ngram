@@ -72,6 +72,19 @@ has stopwords => (
     default => sub { 1 },
 );
 
+=head2 punctuation
+
+String to be used as a regular expression to parse-out unwanted punctuation.
+
+Default: '[\-?;:!,."\(\)]'
+
+=cut
+
+has punctuation => (
+    is      => 'ro',
+    default => sub { q/[\-?;:!,."\(\)]/ },
+);
+
 =head2 counts
 
 HashRef of the ngram counts of each processed file.  This is a computed
@@ -141,13 +154,14 @@ sub _process_ngrams {
         next if $self->stopwords
             && grep { $stop->{$_} } split /\s/, $p;  # Exclude stopwords
 
-        $p =~ s/[\-?;:!,."\(\)]//g; # Remove unwanted punctuation
+        my $pat = $self->punctuation;
+        $p =~ s/$pat//g if $pat; # Remove unwanted punctuation
 
         # XXX Why are there blanks in the returned phrases??
         my @p = grep { $_ } split /\s/, $p;
         next unless @p == $size;
 
-        # Skip a lone single quote (allowed above)
+        # Skip a lone single quote (allowed the default punctuation)
         next if grep { $_ eq "'" } @p;
 
         $counts->{$p} = $phrase->{$p};
