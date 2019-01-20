@@ -76,13 +76,13 @@ has stopwords => (
 
 Regular expression to be used to parse-out unwanted punctuation.
 
-Default: qr/[-!"#$%&()*+,.\/:;<=>?@\[\]^_`{|}~\\\]/
+Default: qr/[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]/
 
 =cut
 
 has punctuation => (
     is      => 'ro',
-    default => sub { qr/[-!"#$%&()*+,.\/:;<=>?@\[\]^_`{|}~\\\]/ },
+    default => sub { qr/[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]/ },
 );
 
 =head2 lowercase
