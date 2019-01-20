@@ -16,6 +16,8 @@ my %opts = (
     stop   => 1,
     phrase => '',
     type   => 'txt',
+    punc   => '[:punct:]',
+    lc     => 0,
 );
 GetOptions( \%opts,
     'dir=s@',
@@ -24,6 +26,8 @@ GetOptions( \%opts,
     'stop=i',
     'phrase=s',
     'type=s',
+    'punc=s',
+    'lc=i',
     'help|?',
     'man',
 ) or pod2usage(2);
@@ -38,9 +42,11 @@ for my $dir ( @{ $opts{dir} } ) {
 }
 
 my $t = Text::TFIDF::Ngram->new(
-    files     => \@files,
-    size      => $opts{size},
-    stopwords => $opts{stop},
+    files       => \@files,
+    size        => $opts{size},
+    stopwords   => $opts{stop},
+    punctuation => $opts{punc},
+    lowercase   => $opts{lc},
 );
 
 # If the top phrases is requested...
