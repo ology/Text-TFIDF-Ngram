@@ -16,7 +16,7 @@ my %opts = (
     stop   => 1,
     phrase => '',
     type   => 'txt',
-    punc   => '[:punct:]',
+    punc   => '[-!"#$%&()*+,.\/:;<=>?@\[\]^_`{|}~\\\]',
     lc     => 0,
 );
 GetOptions( \%opts,
@@ -45,7 +45,7 @@ my $t = Text::TFIDF::Ngram->new(
     files       => \@files,
     size        => $opts{size},
     stopwords   => $opts{stop},
-    punctuation => $opts{punc},
+    punctuation => qr/$opts{punc}/,
     lowercase   => $opts{lc},
 );
 
