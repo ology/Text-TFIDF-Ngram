@@ -74,15 +74,15 @@ has stopwords => (
 
 =head2 punctuation
 
-String to be used as a regular expression to parse-out unwanted punctuation.
+Regular expression to be used to parse-out unwanted punctuation.
 
-Default: '[\-?;:!,."\(\)]'
+Default: qr/[-!"#$%&()*+,.\/:;<=>?@\[\]^_`{|}~\\\]/
 
 =cut
 
 has punctuation => (
     is      => 'ro',
-    default => sub { q/[\-?;:!,."\(\)]/ },
+    default => sub { qr/[-!"#$%&()*+,.\/:;<=>?@\[\]^_`{|}~\\\]/ },
 );
 
 =head2 lowercase
@@ -125,9 +125,11 @@ has file_tfidf => (
 =head2 new
 
   $obj = Text::TFIDF::Ngram->new(
-    files     => \@files,
-    size      => $size,
-    stopwords => $stopwords,
+    files       => \@files,
+    size        => $size,
+    stopwords   => $stopwords,
+    punctuation => $punctuation,
+    lowercase   => $boolean,
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
