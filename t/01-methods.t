@@ -214,4 +214,20 @@ $expected = {
 $x = $obj->counts->{'t/4.txt'};
 is_deeply $x, $expected, 'counts';
 
+$obj = Text::TFIDF::Ngram->new( files => ['t/4.txt'], size => 2, stopwords => 0, lowercase => 1 );
+isa_ok $obj, 'Text::TFIDF::Ngram';
+$expected = {
+    'was white'   => 1,
+    'as cotton'   => 1,
+    'little lamb' => 1,
+    'mary had'    => 1,
+    'its fleece'  => 1,
+    'had a'       => 1,
+    'a little'    => 1,
+    'white as'    => 1,
+    'fleece was'  => 1
+};
+$x = $obj->counts->{'t/4.txt'};
+is_deeply $x, $expected, 'counts';
+
 done_testing();

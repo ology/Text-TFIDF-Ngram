@@ -85,6 +85,17 @@ has punctuation => (
     default => sub { q/[\-?;:!,."\(\)]/ },
 );
 
+=head2 lowercase
+
+Boolean to render the ngams in lowercase.  Default is 0.
+
+=cut
+
+has lowercase => (
+    is      => 'ro',
+    default => sub { 0 },
+);
+
 =head2 counts
 
 HashRef of the ngram counts of each processed file.  This is a computed
@@ -146,6 +157,10 @@ sub _process_ngrams {
     my $ngram  = Lingua::EN::Ngram->new( file => $file );
     my $phrase = $ngram->ngram($size);
 
+    if ( $self->lowercase ) {
+        $phrase = { map { lc $_ => $phrase->{$_} } keys %$phrase };
+    }
+
     my $stop = getStopWords('en');
 
     my $counts;
@@ -157,12 +172,13 @@ sub _process_ngrams {
         my $pat = $self->punctuation;
         $p =~ s/$pat//g if $pat; # Remove unwanted punctuation
 
-        # XXX Why are there blanks in the returned phrases??
         my @p = grep { $_ } split /\s/, $p;
         next unless @p == $size;
 
-        # Skip a lone single quote (allowed the default punctuation)
+        # Skip a lone single quote (allowed by the default punctuation)
         next if grep { $_ eq "'" } @p;
+
+        $p = lc $p if $self->lowercase;
 
         $counts->{$p} = $phrase->{$p};
     }
