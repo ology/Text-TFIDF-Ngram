@@ -87,7 +87,7 @@ has punctuation => (
 
 =head2 lowercase
 
-Boolean to render the ngams in lowercase.  Default is 0.
+Boolean to render the ngrams in lowercase.  Default is 0.
 
 =cut
 
