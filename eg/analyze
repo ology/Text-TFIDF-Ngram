@@ -113,6 +113,8 @@ Options:
   --stop      use stopwords
   --phrase    search phrase
   --type      file extension
+  --punc      pattern of characters to exclude
+  --lc        lower-case the strings
 
 Examples:
 
@@ -156,7 +158,15 @@ Search the corpus for the B<phrase> and its IF-IDF values.  Default = ''
 
 =item --type
 
-Read copus files of this file extension. Default = 'txt'
+Read corpus files of this file extension. Default = 'txt'
+
+=item --punc
+
+A string defining a regular expression of characters to exclude from results.
+
+=item --lc
+
+Lower-case the results.
 
 =back
 
@@ -165,4 +175,3 @@ Read copus files of this file extension. Default = 'txt'
 This program analyzes the given corpus with the TF-IDF measure for ngrams.
 
 =cut
-
