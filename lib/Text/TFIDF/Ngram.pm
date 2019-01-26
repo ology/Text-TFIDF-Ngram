@@ -173,7 +173,7 @@ sub _process_ngrams {
 
     for my $p ( keys %$phrase ) {
         next if $self->stopwords
-            && grep { $stop->{$_} } split /\s/, $p;  # Exclude stopwords
+            && grep { $stop->{$_} } split /\s+/, $p;  # Exclude stopwords
 
         my $pat = $self->punctuation;
         $p =~ s/$pat//g if $pat; # Remove unwanted punctuation
