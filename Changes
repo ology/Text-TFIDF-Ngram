@@ -2,6 +2,7 @@ Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
     - Corrected the split regex in ngram processing.
+    - Remove the digits attribute and processing. Lingua::EN::Ngram excludes them by default it seems.
 
 0.0402 2019-01-25 18:50:30
     - Fix a little grammar.
