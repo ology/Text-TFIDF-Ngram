@@ -126,7 +126,7 @@ Examples:
   perl analyze --dir=/Users/you/Documents/lit/inaugural --phrase='public good'
   perl analyze --dir=/Users/you/Documents/lit/inaugural --dir=/Users/you/Documents/lit/SOTU --top=5
   perl analyze --dir=/Users/you/Documents/lit/Shakespeare --size=3 --top=5
-  perl analyze --dir=/Users/you/perl5/perlbrew/perls/perl-5.27.7/lib/site_perl/5.27.7/Music --size=1 --type=pm
+  perl analyze --dir=/Users/you/perl5/lib/site_perl/Music --size=1 --type=pm
 
 =head1 OPTIONS
 
