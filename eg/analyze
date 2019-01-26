@@ -18,6 +18,7 @@ my %opts = (
     type   => 'txt',
     punc   => '[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]',
     lc     => 0,
+    digits => 0,
 );
 GetOptions( \%opts,
     'dir=s@',
@@ -28,6 +29,7 @@ GetOptions( \%opts,
     'type=s',
     'punc=s',
     'lc',
+    'digits',
     'help|?',
     'man',
 ) or pod2usage(2);
@@ -47,6 +49,7 @@ my $t = Text::TFIDF::Ngram->new(
     stopwords   => $opts{stop},
     punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
     lowercase   => $opts{lc},
+    digits      => $opts{digits},
 );
 
 # If the top phrases is requested...
@@ -167,6 +170,10 @@ A string defining a regular expression of characters to exclude from results.
 =item --lc
 
 Lower-case the results.
+
+=item --digits
+
+Exclude digits from the results.
 
 =back
 
