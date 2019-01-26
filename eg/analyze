@@ -45,7 +45,7 @@ my $t = Text::TFIDF::Ngram->new(
     files       => \@files,
     size        => $opts{size},
     stopwords   => $opts{stop},
-    punctuation => qr/$opts{punc}/,
+    punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
     lowercase   => $opts{lc},
 );
 
