@@ -167,14 +167,19 @@ Read corpus files of this file extension. Default = 'txt'
 =item --punc
 
 A string defining a regular expression of characters to exclude from results.
+Giving a C<''> or C<0> as the value for this will not exclude any characters.
+
+Default: [-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]
+
+Note that the single quote is not excluded by default.
 
 =item --lc
 
-Lower-case the results.
+Lower-case the results. Default = 0
 
 =item --digits
 
-Exclude digits from the results.
+Exclude digits from the results. Default = 0
 
 =back
 
