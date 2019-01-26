@@ -134,7 +134,6 @@ has file_tfidf => (
     stopwords   => $stopwords,
     punctuation => $punctuation,
     lowercase   => $lowercase,
-    digits      => $digits,
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
