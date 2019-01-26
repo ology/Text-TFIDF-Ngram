@@ -118,6 +118,7 @@ Options:
   --type      file extension
   --punc      pattern of characters to exclude
   --lc        lower-case the strings
+  --digits    exclude digits
 
 Examples:
 
