@@ -193,7 +193,7 @@ sub _process_ngrams {
         $p =~ s/\d//g if $self->digits; # Remove unwanted digits
 
         # Skip if we don't have an ngram of the requested size anymore
-        my @p = grep { $_ } split /\s/, $p;
+        my @p = grep { $_ } split /\s+/, $p;
         next unless @p == $size;
 
         # Skip a lone single quote (allowed by the default punctuation)
