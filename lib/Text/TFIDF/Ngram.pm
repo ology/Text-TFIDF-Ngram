@@ -32,14 +32,14 @@ use List::Util qw( sum0 );
 This module computes the TF-IDF ("term frequency-inverse document frequency")
 measure for a corpus of text documents.
 
-For a working example program, please see the F<eg/analyze> file in the
+For a working example program, please see this F<eg/analyze> file in the
 distribution.
 
 =head1 ATTRIBUTES
 
 =head2 files
 
-ArrayRef of filenames.
+ArrayRef of filenames to use in the ngram processing.
 
 =cut
 
@@ -74,9 +74,13 @@ has stopwords => (
 
 =head2 punctuation
 
-Regular expression to be used to parse-out unwanted punctuation.
+Regular expression to be used to parse-out unwanted punctuation.  Giving the
+constructor a value of C<''> or C<0> will override this and not exclude any
+characters from the results.
 
 Default: qr/[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]/
+
+Note that the default does not exclude the single quote.
 
 =cut
 
@@ -145,7 +149,7 @@ has file_tfidf => (
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
-in, the ngrams of each file is stored.
+in, the ngrams of each file are stored in the B<counts>.
 
 =head2 BUILD
 
@@ -290,6 +294,8 @@ sub tfidf_by_file {
 __END__
 
 =head1 SEE ALSO
+
+The F<eg/analyze> file in this distribution
 
 L<https://en.wikipedia.org/wiki/Tf%E2%80%93idf>
 
