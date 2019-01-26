@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.0300';
+our $VERSION = '0.0400';
 
 use Moo;
 use strictures 2;
@@ -96,6 +96,17 @@ has lowercase => (
     default => sub { 0 },
 );
 
+=head2 digits
+
+Boolean to exclude digits from the ngram results.  Default is 0.
+
+=cut
+
+has digits => (
+    is      => 'ro',
+    default => sub { 0 },
+);
+
 =head2 counts
 
 HashRef of the ngram counts of each processed file.  This is a computed
@@ -129,7 +140,8 @@ has file_tfidf => (
     size        => $size,
     stopwords   => $stopwords,
     punctuation => $punctuation,
-    lowercase   => $boolean,
+    lowercase   => $lowercase,
+    digits      => $digits,
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
@@ -174,6 +186,9 @@ sub _process_ngrams {
         my $pat = $self->punctuation;
         $p =~ s/$pat//g if $pat; # Remove unwanted punctuation
 
+        $p =~ s/\d//g if $self->digits; # Remove unwanted digits
+
+        # Skip if we don't have an ngram of the requested size anymore
         my @p = grep { $_ } split /\s/, $p;
         next unless @p == $size;
 
