@@ -1,6 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Improved the documentation ever so slightly.
+
+0.0400 2019-01-25 17:58:43
     - Add a digits attribute.
     - Update the eg/analyze program.
 
