@@ -204,7 +204,7 @@ sub _process_ngrams {
         $counts->{$p} = $phrase->{$p};
     }
 
-	$self->{counts}{$file} = $counts;
+    $self->{counts}{$file} = $counts;
 }
 
 =head2 tf
