@@ -182,7 +182,7 @@ sub _process_ngrams {
         my @p = grep { $_ } split /\s+/, $p;
         next unless @p == $size;
 
-        # Skip a lone single quote (allowed by the default punctuation)
+        # Skip an ngram with a lone single quote (allowed by the default punctuation)
         next if grep { $_ eq "'" } @p;
 
         $p = lc $p if $self->lowercase;
