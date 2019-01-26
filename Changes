@@ -1,6 +1,10 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Add a digits attribute.
+    - Update the eg/analyze program.
+
+0.0300 2019-01-20 01:00:18
     - Add a user defined punctuation regex attribute.
     - Add a lowercase attribute.
 
