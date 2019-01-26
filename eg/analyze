@@ -18,7 +18,6 @@ my %opts = (
     type   => 'txt',
     punc   => '[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]',
     lc     => 0,
-    digits => 0,
 );
 GetOptions( \%opts,
     'dir=s@',
@@ -29,7 +28,6 @@ GetOptions( \%opts,
     'type=s',
     'punc=s',
     'lc',
-    'digits',
     'help|?',
     'man',
 ) or pod2usage(2);
@@ -49,7 +47,6 @@ my $t = Text::TFIDF::Ngram->new(
     stopwords   => $opts{stop},
     punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
     lowercase   => $opts{lc},
-    digits      => $opts{digits},
 );
 
 # If the top phrases is requested...
@@ -118,7 +115,6 @@ Options:
   --type      file extension
   --punc      pattern of characters to exclude
   --lc        lower-case the strings
-  --digits    exclude digits
 
 Examples:
 
@@ -176,10 +172,6 @@ Note that the single quote is not excluded by default.
 =item --lc
 
 Lower-case the results. Default = 0
-
-=item --digits
-
-Exclude digits from the results. Default = 0
 
 =back
 
