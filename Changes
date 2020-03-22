@@ -1,6 +1,7 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Don't document the ->BUILD method.
 
 0.0501 2019-01-26 12:22:33
     - Fix a documentation line!

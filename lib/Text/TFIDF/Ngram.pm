@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.0501';
+our $VERSION = '0.0502';
 
 use Moo;
 use strictures 2;
@@ -139,9 +139,7 @@ has file_tfidf => (
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
 in, the ngrams of each file are stored in the B<counts>.
 
-=head2 BUILD
-
-Load the given file phrase counts.
+=for Pod::Coverage BUILD
 
 =cut
 
