@@ -17,17 +17,17 @@ use List::Util qw( sum0 );
 
   use Text::TFIDF::Ngram;
 
-  my $obj = Text::TFIDF::Ngram->new(
+  my $t = Text::TFIDF::Ngram->new(
     files => [qw( foo.txt bar.txt )],
     size  => 3,
   );
 
-  my $w = $obj->tf( 'foo.txt', 'foo bar baz' );
-  my $x = $obj->idf('foo bar baz');
-  my $y = $obj->tfidf( 'foo.txt', 'foo bar baz' );
+  my $w = $t->tf( 'foo.txt', 'foo bar baz' );
+  my $x = $t->idf('foo bar baz');
+  my $y = $t->tfidf( 'foo.txt', 'foo bar baz' );
   printf "TF: %.3f, IDF: %.3f, TF-IDF: %.3f\n", $w, $x, $y;
 
-  my $z = $obj->tfidf_by_file;
+  my $z = $t->tfidf_by_file;
   print Dumper $z;
 
 =head1 DESCRIPTION
@@ -140,7 +140,7 @@ has file_tfidf => (
 
 =head2 new
 
-  $obj = Text::TFIDF::Ngram->new(
+  $t = Text::TFIDF::Ngram->new(
     files       => \@files,
     size        => $size,
     stopwords   => $stopwords,
@@ -205,7 +205,7 @@ sub _process_ngrams {
 
 =head2 tf
 
-  $tf = $obj->tf( $file, $phrase );
+  $tf = $t->tf( $file, $phrase );
 
 Return the frequency of the given B<phrase> in the document B<file>.  This is
 not the "raw count" of the phrase, but rather the percentage of times it is
@@ -221,7 +221,7 @@ sub tf {
 
 =head2 idf
 
-  $idf = $obj->idf($phrase);
+  $idf = $t->idf($phrase);
 
 Return the inverse document frequency of a B<phrase> across all corpus
 documents.
@@ -247,7 +247,7 @@ sub idf {
 
 =head2 tfidf
 
-  $tfidf = $obj->tfidf( $file, $phrase );
+  $tfidf = $t->tfidf( $file, $phrase );
 
 Compute the TF-IDF weight for the given B<file> and B<phrase>.  If the phrase
 is not in the corpus, a warning is issued and undef is returned.
@@ -263,7 +263,7 @@ sub tfidf {
 
 =head2 tfidf_by_file()
 
-  $tfidf = $obj->tfidf_by_file;
+  $tfidf = $t->tfidf_by_file;
 
 Construct a HashRef of all files with all phrases and their B<tfidf> values.
 
