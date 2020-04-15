@@ -210,7 +210,7 @@ sub _process_ngrams {
 
   $tf = $obj->tf( $file, $phrase );
 
-Returns the frequency of the given B<phrase> in the document B<file>.  This is
+Return the frequency of the given B<phrase> in the document B<file>.  This is
 not the "raw count" of the phrase, but rather the percentage of times it is
 seen.
 
@@ -226,7 +226,7 @@ sub tf {
 
   $idf = $obj->idf($phrase);
 
-Returns the inverse document frequency of a B<phrase>.
+Return the inverse document frequency of a B<phrase>.
 
 =cut
 
@@ -251,7 +251,7 @@ sub idf {
 
   $tfidf = $obj->tfidf( $file, $phrase );
 
-Computes the TF-IDF weight for the given B<file> and B<phrase>.  If the phrase
+Compute the TF-IDF weight for the given B<file> and B<phrase>.  If the phrase
 is not in the corpus, a warning is issued and undef is returned.
 
 =cut
