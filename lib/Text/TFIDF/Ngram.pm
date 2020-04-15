@@ -284,7 +284,7 @@ sub tfidf_by_file {
         }
     }
 
-    return $self->{file_tfidf};
+    return $self->file_tfidf;
 }
 
 1;
