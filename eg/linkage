@@ -28,8 +28,8 @@ GetOptions(
 ) or die "Can't GetOptions";
 
 my @files;
-for my $dir ( @{ $opts{dir} } ) {
-    push @files, File::Find::Rule->file()->name( '*.' . $opts{type} )->in($dir);
+for my $dir (@{ $opts{dir} }) {
+    push @files, File::Find::Rule->file()->name('*.' . $opts{type})->in($dir);
 }
 
 my $t = Text::TFIDF::Ngram->new(
@@ -44,7 +44,7 @@ my $by_file = $t->tfidf_by_file;
 
 my $counter = 0;
 
-for my $file ( sort keys %$by_file ) {
+for my $file (sort keys %$by_file) {
     printf "%d. %s\n", ++$counter, $file;
 
     my %score;
@@ -76,9 +76,9 @@ for my $file ( sort keys %$by_file ) {
 
         next if $words{$i} < 2 && $words{$j} < 2;
 
-        $gv->add_edge( from => $i, to => $j, label => $score{$bigram} )
+        $gv->add_edge(from => $i, to => $j, label => $score{$bigram})
             unless $edges{$bigram}++;
     }
 
-    $gv->run( format => 'png', output_file => "$0-$i.png" );
+    $gv->run(format => 'png', output_file => "$0-$i.png");
 }
