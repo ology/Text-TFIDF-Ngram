@@ -9,7 +9,6 @@ use Text::TFIDF::Ngram;
 
 my %opts = (
     dir  => undef,
-    file => undef,
     size => 2,
     stop => 1,
     type => 'txt',
@@ -19,7 +18,6 @@ my %opts = (
 GetOptions(
     \%opts,
     'dir=s@',
-    'file=s',
     'size=i',
     'stop=i',
     'type=s',
@@ -36,7 +34,6 @@ for my $dir ( @{ $opts{dir} } ) {
 
 my $t = Text::TFIDF::Ngram->new(
     files       => \@files,
-#    files       => [$opts{file}],
     size        => $opts{size},
     stopwords   => $opts{stop},
     punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
