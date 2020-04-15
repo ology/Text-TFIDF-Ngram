@@ -1,0 +1,89 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+
+use File::Find::Rule;
+use Getopt::Long;
+use GraphViz2;
+use Text::TFIDF::Ngram;
+
+my %opts = (
+    dir  => undef,
+    file => undef,
+    size => 2,
+    stop => 1,
+    type => 'txt',
+    punc => '[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]',
+    lc   => 0,
+);
+GetOptions(
+    \%opts,
+    'dir=s@',
+    'file=s',
+    'size=i',
+    'stop=i',
+    'type=s',
+    'punc=s',
+    'lc',
+    'help|?',
+    'man',
+) or die "Can't GetOptions: $!";
+
+my @files;
+for my $dir ( @{ $opts{dir} } ) {
+    push @files, File::Find::Rule->file()->name( '*.' . $opts{type} )->in($dir);
+}
+
+my $t = Text::TFIDF::Ngram->new(
+    files       => \@files,
+#    files       => [$opts{file}],
+    size        => $opts{size},
+    stopwords   => $opts{stop},
+    punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
+    lowercase   => $opts{lc},
+);
+
+my $x = $t->tfidf_by_file;
+
+my %score;
+my %words;
+
+my $i = 0;
+
+for my $file ( sort keys %$x ) {
+    printf "%d. %s\n", ++$i, $file;
+
+    my $n = 0;
+
+    for my $p (sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} }) {
+        next if $p =~ /[A-Z]/;
+
+        printf "\t%d. %s = %.10f\n", ++$n, $p, $x->{$file}{$p};
+
+        my ($head, $tail) = split / /, $p;
+        $score{ $head . ' ' . $tail }++;
+        $words{$head}++;
+        $words{$tail}++;
+    }
+
+    my $g = GraphViz2->new(
+        global => { directed => 1 },
+        node   => { shape => 'oval' },
+        edge   => { color => 'grey' },
+    );
+
+    my %edges;
+
+    for my $bigram (keys %score) {
+        my ($i, $j) = split ' ', $bigram;
+
+        next if $words{$i} < 2 && $words{$j} < 2;
+
+        $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
+            unless $edges{$bigram}++;
+    }
+
+    $g->run( format => 'png', output_file => "$0-$i.png" );
+
+    last; # Only generate one graph for now...
+}
