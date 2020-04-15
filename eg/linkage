@@ -72,7 +72,7 @@ for my $file (sort keys %$by_file) {
     my %edges;
 
     for my $bigram (keys %score) {
-        my ($i, $j) = split ' ', $bigram;
+        my ($i, $j) = split / /, $bigram;
 
         next if $words{$i} < 2 && $words{$j} < 2;
 
