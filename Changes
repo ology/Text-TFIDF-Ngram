@@ -1,6 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Improve documentation.
+
+0.0503 2020-04-15 08:04:01
     - Tweak code.
     - Improve documentation.
     - Add the eg/linkage program to display a graphviz diagram.
