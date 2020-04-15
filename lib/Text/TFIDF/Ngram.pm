@@ -43,7 +43,7 @@ corpus will return C<0>.
 
 =head2 files
 
-ArrayRef of filenames to use in the ngram processing.
+ArrayRef of filenames.
 
 =cut
 
