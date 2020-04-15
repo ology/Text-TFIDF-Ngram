@@ -40,6 +40,13 @@ my $t = Text::TFIDF::Ngram->new(
 
 my $x = $t->tfidf_by_file;
 
+my $g = GraphViz2->new(
+    global => { directed => 1 },
+    node   => { shape => 'oval' },
+    edge   => { color => 'grey' },
+);
+
+my %edges;
 my %score;
 my %words;
 
@@ -60,25 +67,13 @@ for my $file ( sort keys %$x ) {
         $words{$head}++;
         $words{$tail}++;
     }
-
-    my $g = GraphViz2->new(
-        global => { directed => 1 },
-        node   => { shape => 'oval' },
-        edge   => { color => 'grey' },
-    );
-
-    my %edges;
-
-    for my $bigram (keys %score) {
-        my ($i, $j) = split ' ', $bigram;
-
-        next if $words{$i} < 2 && $words{$j} < 2;
-
-        $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
-            unless $edges{$bigram}++;
-    }
-
-    $g->run( format => 'png', output_file => "$0-$i.png" );
-
-    last; # Only generate one graph for now...
 }
+
+for my $bigram (keys %score) {
+    my ($i, $j) = split ' ', $bigram;
+    next if $words{$i} < 2 && $words{$j} < 2;
+    $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
+        unless $edges{$bigram}++;
+}
+
+$g->run( format => 'png', output_file => "$0.png" );
