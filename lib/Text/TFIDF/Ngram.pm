@@ -25,7 +25,7 @@ use List::Util qw( sum0 );
   my $w = $obj->tf( 'foo.txt', 'foo bar baz' );
   my $x = $obj->idf('foo bar baz');
   my $y = $obj->tfidf( 'foo.txt', 'foo bar baz' );
-  printf "TF: %.3f, IDF: %.3f, TFIDF: %.3f\n", $w, $x, $y;
+  printf "TF: %.3f, IDF: %.3f, TF-IDF: %.3f\n", $w, $x, $y;
 
   my $z = $obj->tfidf_by_file;
   print Dumper $z;
