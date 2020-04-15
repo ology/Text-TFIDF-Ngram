@@ -202,9 +202,9 @@ seen.
 =cut
 
 sub tf {
-    my ( $self, $file, $word ) = @_;
-    return 0 unless exists $self->{counts}{$file} && exists $self->{counts}{$file}{$word};
-    return $self->{counts}{$file}{$word} / sum0( values %{ $self->{counts}{$file} } );
+    my ( $self, $file, $phrase ) = @_;
+    return 0 unless exists $self->{counts}{$file} && exists $self->{counts}{$file}{$phrase};
+    return $self->{counts}{$file}{$phrase} / sum0( values %{ $self->{counts}{$file} } );
 }
 
 =head2 idf
@@ -216,16 +216,16 @@ Returns the inverse document frequency of a B<phrase>.
 =cut
 
 sub idf {
-    my ( $self, $word ) = @_;
+    my ( $self, $phrase ) = @_;
 
     my $count = 0;
 
     for my $file ( keys %{ $self->{counts} } ) {
-        $count++ if exists $self->{counts}{$file}{$word};
+        $count++ if exists $self->{counts}{$file}{$phrase};
     }
 
     unless ( $count ) {
-        carp "'$word' is not present in any document";
+        carp "'$phrase' is not present in any document";
         return undef;
     }
 
@@ -242,10 +242,10 @@ is not in the corpus, a warning is issued and undef is returned.
 =cut
 
 sub tfidf {
-    my ( $self, $file, $word ) = @_;
-    my $idf = $self->idf($word);
+    my ( $self, $file, $phrase ) = @_;
+    my $idf = $self->idf($phrase);
     return undef unless $idf;
-    return $self->tf( $file, $word ) * $idf;
+    return $self->tf( $file, $phrase ) * $idf;
 }
 
 =head2 tfidf_by_file()
@@ -262,12 +262,12 @@ sub tfidf_by_file {
     my %seen;
 
     for my $file ( keys %{ $self->{counts} } ) {
-        for my $word ( keys %{ $self->{counts}{$file} } ) {
-            my $tfidf = $self->tfidf( $file, $word );
+        for my $phrase ( keys %{ $self->{counts}{$file} } ) {
+            my $tfidf = $self->tfidf( $file, $phrase );
 
-            next if $seen{$word}++ || !defined $tfidf;
+            next if $seen{$phrase}++ || !defined $tfidf;
 
-            $self->{file_tfidf}{$file}{$word} = $tfidf;
+            $self->{file_tfidf}{$file}{$phrase} = $tfidf;
         }
     }
 
