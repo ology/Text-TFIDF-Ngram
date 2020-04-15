@@ -71,7 +71,9 @@ for my $file ( sort keys %$by_file ) {
 
 for my $bigram (keys %score) {
     my ($i, $j) = split ' ', $bigram;
+
     next if $words{$i} < 2 && $words{$j} < 2;
+
     $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
         unless $edges{$bigram}++;
 }
