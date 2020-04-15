@@ -57,7 +57,9 @@ has files => (
 
 =head2 size
 
-Integer ngram phrase size.  Default is 1.
+Integer ngram phrase size.
+
+Default: C<1>
 
 =cut
 
@@ -69,7 +71,9 @@ has size => (
 
 =head2 stopwords
 
-Boolean indicating that phrases with stopwords will be ignored.  Default is 1.
+Boolean indicating that phrases with stopwords will be ignored.
+
+Default: C<1>
 
 =cut
 
@@ -98,7 +102,9 @@ has punctuation => (
 
 =head2 lowercase
 
-Boolean to render the ngrams in lowercase.  Default is 0.
+Boolean to render the ngrams in lowercase.
+
+Default: C<0>
 
 =cut
 
@@ -109,8 +115,9 @@ has lowercase => (
 
 =head2 counts
 
-HashRef of the ngram counts of each processed file.  This is a computed
-attribute - providing it in the constructor will be ignored.
+HashRef of the ngram counts of each processed file.
+
+This is a computed attribute. Providing it to the constructor will be ignored.
 
 =cut
 
@@ -121,8 +128,9 @@ has counts => (
 
 =head2 file_tfidf
 
-HashRef of the TF-IDF values in each processed file.  This is a computed
-attribute - providing it in the constructor will be ignored.
+HashRef of the TF-IDF values in each processed file.
+
+This is a computed attribute. Providing it to the constructor will be ignored.
 
 =cut
 
