@@ -80,5 +80,5 @@ for my $file (sort keys %$by_file) {
             unless $edges{$bigram}++;
     }
 
-    $gv->run(format => 'png', output_file => "$0.png");
+    $gv->run(format => 'png', output_file => "$0-$i.png");
 }
