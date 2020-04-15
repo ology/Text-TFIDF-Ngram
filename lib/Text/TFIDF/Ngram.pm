@@ -36,7 +36,7 @@ This module computes the TF-IDF ("term frequency / inverse document frequency")
 measure for a corpus of text documents.
 
 This module will B<only> work when given more than one document.  Because the
-C<idf> method is computed based on all documents, a single document in the given
+B<idf> method is computed based on all documents, a single document in the given
 corpus will return C<0>.
 
 For a working example program, please see the F<eg/analyze> file in this
