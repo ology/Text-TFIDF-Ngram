@@ -261,7 +261,7 @@ sub tfidf {
     return $self->tf( $file, $phrase ) * $idf;
 }
 
-=head2 tfidf_by_file()
+=head2 tfidf_by_file
 
   $tfidf = $t->tfidf_by_file;
 
