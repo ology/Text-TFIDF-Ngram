@@ -39,8 +39,6 @@ This module will B<only> work when given more than one document.  Because the
 B<idf> method is computed based on all documents, a single document in the given
 corpus will return C<0>.
 
-For a working example program, see the F<eg/analyze> file in this distribution.
-
 =head1 ATTRIBUTES
 
 =head2 files
