@@ -38,7 +38,7 @@ my $t = Text::TFIDF::Ngram->new(
     lowercase   => $opts{lc},
 );
 
-my $x = $t->tfidf_by_file;
+my $by_file = $t->tfidf_by_file;
 
 my $g = GraphViz2->new(
     global => { directed => 1 },
@@ -52,15 +52,15 @@ my %words;
 
 my $i = 0;
 
-for my $file ( sort keys %$x ) {
+for my $file ( sort keys %$by_file ) {
     printf "%d. %s\n", ++$i, $file;
 
     my $n = 0;
 
-    for my $p (sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} }) {
+    for my $p (sort { $by_file->{$file}{$b} <=> $by_file->{$file}{$a} } keys %{ $by_file->{$file} }) {
         next if $p =~ /[A-Z]/; # Skip proper nouns and friends
 
-        printf "\t%d. %s = %.10f\n", ++$n, $p, $x->{$file}{$p};
+        printf "\t%d. %s = %.10f\n", ++$n, $p, $by_file->{$file}{$p};
 
         my ($head, $tail) = split / /, $p;
         $score{ $head . ' ' . $tail }++;
