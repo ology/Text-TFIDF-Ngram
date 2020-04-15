@@ -7,6 +7,8 @@ use Getopt::Long;
 use GraphViz2;
 use Text::TFIDF::Ngram;
 
+# See the eg/analyze program for option documentation.
+
 my %opts = (
     dir  => undef,
     size => 2,
