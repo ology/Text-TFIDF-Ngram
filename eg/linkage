@@ -42,22 +42,22 @@ my $t = Text::TFIDF::Ngram->new(
 
 my $by_file = $t->tfidf_by_file;
 
-my $i = 0;
+my $counter = 0;
 
 for my $file ( sort keys %$by_file ) {
-    printf "%d. %s\n", ++$i, $file;
+    printf "%d. %s\n", ++$counter, $file;
 
     my %score;
     my %words;
 
     my $n = 0;
 
-    for my $p (sort { $by_file->{$file}{$b} <=> $by_file->{$file}{$a} } keys %{ $by_file->{$file} }) {
-        next if $p =~ /[A-Z]/; # Skip proper nouns and friends
+    for my $phrase (sort { $by_file->{$file}{$b} <=> $by_file->{$file}{$a} } keys %{ $by_file->{$file} }) {
+        next if $phrase =~ /[A-Z]/; # Skip proper nouns and friends
 
-        printf "\t%d. %s = %.10f\n", ++$n, $p, $by_file->{$file}{$p};
+        printf "\t%d. %s = %.10f\n", ++$n, $phrase, $by_file->{$file}{$phrase};
 
-        my ($head, $tail) = split / /, $p;
+        my ($head, $tail) = split / /, $phrase;
         $score{ $head . ' ' . $tail }++;
         $words{$head}++;
         $words{$tail}++;
