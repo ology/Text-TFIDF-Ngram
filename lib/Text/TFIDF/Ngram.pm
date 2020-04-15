@@ -229,7 +229,7 @@ sub idf {
         return undef;
     }
 
-    return - log( $count / scalar( keys %{ $self->{counts} } ) ) / log(10) + 0;
+    return - log( $count / keys %{ $self->{counts} } ) / log(10) + 0;
 }
 
 =head2 tfidf
