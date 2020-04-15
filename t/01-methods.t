@@ -101,7 +101,6 @@ $expected = {
     }
 };
 $got = $obj->tfidf_by_file;
-# Normalize the value digits of precision:
 for my $file ( keys %$got ) {
     for my $word ( keys %{ $got->{$file} } ) {
         $got->{$file}{$word} = sprintf '%.3f', $got->{$file}{$word};
