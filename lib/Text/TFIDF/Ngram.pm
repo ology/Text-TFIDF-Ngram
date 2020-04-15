@@ -152,7 +152,7 @@ has file_tfidf => (
   );
 
 Create a new C<Text::TFIDF::Ngram> object.  If the B<files> argument is passed
-in, the ngrams of each file are stored in the B<counts>.
+in, the ngrams of each file are stored in B<counts>.
 
 =for Pod::Coverage BUILD
 
