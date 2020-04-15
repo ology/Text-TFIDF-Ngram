@@ -48,14 +48,13 @@ my $g = GraphViz2->new(
     edge   => { color => 'grey' },
 );
 
-my %edges;
-my %score;
-my %words;
-
 my $i = 0;
 
 for my $file ( sort keys %$by_file ) {
     printf "%d. %s\n", ++$i, $file;
+
+    my %score;
+    my %words;
 
     my $n = 0;
 
@@ -69,15 +68,17 @@ for my $file ( sort keys %$by_file ) {
         $words{$head}++;
         $words{$tail}++;
     }
+
+    my %edges;
+
+    for my $bigram (keys %score) {
+        my ($i, $j) = split ' ', $bigram;
+
+        next if $words{$i} < 2 && $words{$j} < 2;
+
+        $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
+            unless $edges{$bigram}++;
+    }
+
+    $g->run( format => 'png', output_file => "$0-$i.png" );
 }
-
-for my $bigram (keys %score) {
-    my ($i, $j) = split ' ', $bigram;
-
-    next if $words{$i} < 2 && $words{$j} < 2;
-
-    $g->add_edge( from => $i, to => $j, label => $score{$bigram} )
-        unless $edges{$bigram}++;
-}
-
-$g->run( format => 'png', output_file => "$0.png" );
