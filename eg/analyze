@@ -123,6 +123,10 @@ Examples:
   perl analyze --dir=/Users/you/Documents/lit/Shakespeare --size=3 --top=5
   perl analyze --dir=/Users/you/perl5/lib/site_perl/Music --size=1 --type=pm --punc=''
 
+=head1 DESCRIPTION
+
+This program analyzes the given corpus with the TF-IDF measure for ngrams.
+
 =head1 OPTIONS
 
 =over 4
@@ -173,9 +177,5 @@ Note that the single quote is not excluded by default.
 Lower-case the results. Default = 0
 
 =back
-
-=head1 DESCRIPTION
-
-This program analyzes the given corpus with the TF-IDF measure for ngrams.
 
 =cut
