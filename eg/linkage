@@ -11,7 +11,6 @@ use Text::TFIDF::Ngram;
 
 my %opts = (
     dir  => undef,
-    size => 2,
     stop => 1,
     type => 'txt',
     punc => '[-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]',
@@ -20,7 +19,6 @@ my %opts = (
 GetOptions(
     \%opts,
     'dir=s@',
-    'size=i',
     'stop=i',
     'type=s',
     'punc=s',
@@ -34,7 +32,7 @@ for my $dir ( @{ $opts{dir} } ) {
 
 my $t = Text::TFIDF::Ngram->new(
     files       => \@files,
-    size        => $opts{size},
+    size        => 2, # This code diagrams bi-grams
     stopwords   => $opts{stop},
     punctuation => $opts{punc} ? qr/$opts{punc}/ : '',
     lowercase   => $opts{lc},
