@@ -218,8 +218,8 @@ seen.
 
 sub tf {
     my ( $self, $file, $phrase ) = @_;
-    return 0 unless exists $self->{counts}{$file} && exists $self->{counts}{$file}{$phrase};
-    return $self->{counts}{$file}{$phrase} / sum0( values %{ $self->{counts}{$file} } );
+    return 0 unless exists $self->counts->{$file} && exists $self->counts->{$file}{$phrase};
+    return $self->counts->{$file}{$phrase} / sum0( values %{ $self->counts->{$file} } );
 }
 
 =head2 idf
@@ -235,8 +235,8 @@ sub idf {
 
     my $count = 0;
 
-    for my $file ( keys %{ $self->{counts} } ) {
-        $count++ if exists $self->{counts}{$file}{$phrase};
+    for my $file ( keys %{ $self->counts } ) {
+        $count++ if exists $self->counts->{$file}{$phrase};
     }
 
     unless ( $count ) {
@@ -244,7 +244,7 @@ sub idf {
         return undef;
     }
 
-    return - log( $count / keys %{ $self->{counts} } ) / log(10) + 0;
+    return - log( $count / keys %{ $self->counts } ) / log(10) + 0;
 }
 
 =head2 tfidf
@@ -276,8 +276,8 @@ sub tfidf_by_file {
 
     my %seen;
 
-    for my $file ( keys %{ $self->{counts} } ) {
-        for my $phrase ( keys %{ $self->{counts}{$file} } ) {
+    for my $file ( keys %{ $self->counts } ) {
+        for my $phrase ( keys %{ $self->counts->{$file} } ) {
             my $tfidf = $self->tfidf( $file, $phrase );
 
             next if $seen{$phrase}++ || !defined $tfidf;
