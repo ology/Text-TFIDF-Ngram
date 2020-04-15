@@ -42,12 +42,6 @@ my $t = Text::TFIDF::Ngram->new(
 
 my $by_file = $t->tfidf_by_file;
 
-my $g = GraphViz2->new(
-    global => { directed => 1 },
-    node   => { shape => 'oval' },
-    edge   => { color => 'grey' },
-);
-
 my $i = 0;
 
 for my $file ( sort keys %$by_file ) {
@@ -68,6 +62,12 @@ for my $file ( sort keys %$by_file ) {
         $words{$head}++;
         $words{$tail}++;
     }
+
+    my $g = GraphViz2->new(
+        global => { directed => 1 },
+        node   => { shape => 'oval' },
+        edge   => { color => 'grey' },
+    );
 
     my %edges;
 
