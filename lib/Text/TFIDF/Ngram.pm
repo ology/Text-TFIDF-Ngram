@@ -29,7 +29,7 @@ use List::Util qw( sum0 );
 
 =head1 DESCRIPTION
 
-This module computes the TF-IDF ("term frequency-inverse document frequency")
+This module computes the TF-IDF ("term frequency / inverse document frequency")
 measure for a corpus of text documents.
 
 This module will B<only> work when given more than one document.  Because the
