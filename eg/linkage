@@ -2,14 +2,14 @@
 use strict;
 use warnings;
 
-# This code may take forever to generate a diagram that is too big. YMMV
+# This code may take most of forever to generate a diagram that is too big. YMMV
+
+# See the eg/analyze program for option documentation.
 
 use File::Find::Rule;
 use Getopt::Long;
 use GraphViz2;
 use Text::TFIDF::Ngram;
-
-# See the eg/analyze program for option documentation.
 
 my %opts = (
     dir  => undef,
