@@ -23,8 +23,6 @@ GetOptions(
     'type=s',
     'punc=s',
     'lc',
-    'help|?',
-    'man',
 ) or die "Can't GetOptions: $!";
 
 my @files;
