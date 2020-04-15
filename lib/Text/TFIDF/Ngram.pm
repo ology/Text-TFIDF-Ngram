@@ -294,7 +294,7 @@ __END__
 
 =head1 SEE ALSO
 
-The F<eg/analyze> file in this distribution
+The F<eg/analyze> and F<t/01-methods.t> files in this distribution
 
 L<https://en.wikipedia.org/wiki/Tf%E2%80%93idf>
 
