@@ -223,7 +223,8 @@ sub tf {
 
   $idf = $obj->idf($phrase);
 
-Return the inverse document frequency of a B<phrase>.
+Return the inverse document frequency of a B<phrase> across all corpus
+documents.
 
 =cut
 
