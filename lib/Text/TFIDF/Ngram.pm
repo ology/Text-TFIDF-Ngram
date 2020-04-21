@@ -226,6 +226,9 @@ sub tf {
 Return the inverse document frequency of a B<phrase> across all corpus
 documents.
 
+If the phrase is not in the corpus, a warning is issued and undef is
+returned.
+
 =cut
 
 sub idf {
@@ -249,8 +252,7 @@ sub idf {
 
   $tfidf = $t->tfidf( $file, $phrase );
 
-Compute the TF-IDF weight for the given B<file> and B<phrase>.  If the phrase
-is not in the corpus, a warning is issued and undef is returned.
+Compute the TF-IDF weight for the given B<file> and B<phrase>.
 
 =cut
 
