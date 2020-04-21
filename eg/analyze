@@ -65,6 +65,7 @@ if ( $opts{top} ) {
 
         for my $p ( sort { $x->{$file}{$b} <=> $x->{$file}{$a} } keys %{ $x->{$file} } ) {
             next if $opts{proper} && $p =~ /[A-Z]/;
+
             last if ++$n > $opts{top};
 
             printf "\t%d. %s = %.10f\n", $n, $p, $x->{$file}{$p};
