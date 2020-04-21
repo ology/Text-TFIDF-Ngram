@@ -106,7 +106,7 @@ analyze - TF-IDF Analyze a corpus
 
   perl analyze --dir=/some/corpus [options]
 
-  perl analyze --dir=/Users/you/Documents/lit/inaugural --top=5
+  perl analyze --dir=/Users/you/Documents/lit/inaugural --top=5 --proper
   perl analyze --dir=/Users/you/Documents/lit/inaugural --phrase='public good'
   perl analyze --dir=/Users/you/Documents/lit/inaugural --dir=/Users/you/Documents/lit/SOTU --top=5
   perl analyze --dir=/Users/you/Documents/lit/Shakespeare --size=3 --top=5
