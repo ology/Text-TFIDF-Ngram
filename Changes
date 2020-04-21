@@ -1,6 +1,8 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+
+0.0505 2020-04-15 13:57:35
     - Improve the eg/linkage and eg/analyze programs.
 
 0.0504 2020-04-15 09:03:28
