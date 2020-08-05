@@ -110,7 +110,7 @@ analyze - TF-IDF Analyze a corpus
   perl analyze --dir=/Users/you/Documents/lit/inaugural --phrase='public good'
   perl analyze --dir=/Users/you/Documents/lit/inaugural --dir=/Users/you/Documents/lit/SOTU --top=5
   perl analyze --dir=/Users/you/Documents/lit/Shakespeare --size=3 --top=5
-  perl analyze --dir=/Users/you/perl5/lib/site_perl/Music --size=1 --type=pm --punc=''
+  perl analyze --dir=/Users/you/perl5/lib/site_perl/Music --size=1 --type=pm --punc=0
 
 =head1 DESCRIPTION
 
@@ -165,7 +165,7 @@ Default: C<txt>
 =item --punc
 
 A string defining a regular expression of characters to exclude from results.
-Giving a C<''> or C<0> as the value for this will not exclude any characters.
+Giving C<0> as the value for this will not exclude any characters.
 
 Default: [-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]
 
