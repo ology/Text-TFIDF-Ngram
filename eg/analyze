@@ -167,7 +167,7 @@ Default: C<txt>
 A string defining a regular expression of characters to exclude from results.
 Giving C<0> as the value for this will not exclude any characters.
 
-Default: [-!"#$%&()*+,.\/\\:;<=>?@\[\]^_`{|}~]
+Default: (?!')[[:punct:]]
 
 Note that the single quote is not excluded by default.
 
