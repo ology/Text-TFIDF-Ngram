@@ -1,6 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Improve eg/analyze.
+
+0.0508 2021-02-15 11:39:02
     - Add a test for the single quote.
 
 0.0507 2021-02-15 07:45:19
