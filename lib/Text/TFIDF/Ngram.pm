@@ -86,7 +86,7 @@ Regular expression to be used to parse-out unwanted punctuation.  Giving the
 constructor a value of C<''> or C<0> will override this and not exclude any
 characters from the results.
 
-Default: qr/(?!-)[[:punct:]]/
+Default: qr/(?!')[[:punct:]]/
 
 Note that the default does not exclude the single quote.
 
@@ -94,7 +94,7 @@ Note that the default does not exclude the single quote.
 
 has punctuation => (
     is      => 'ro',
-    default => sub { qr/(?!-)[[:punct:]]/ },
+    default => sub { qr/(?!')[[:punct:]]/ },
 );
 
 =head2 lowercase
