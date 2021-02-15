@@ -1,6 +1,8 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Improve tests a bit.
+    - Simplify punctuation regular expression.
 
 0.0505 2020-04-15 13:57:35
     - Improve the eg/linkage and eg/analyze programs.
