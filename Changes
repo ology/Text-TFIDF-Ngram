@@ -1,6 +1,9 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Add a test for the non-excluded single quote.
+
+0.0507 2021-02-15 07:45:19
     - Whoops! Fix excluded character!
 
 0.0506 2021-02-15 07:36:29
