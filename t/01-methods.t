@@ -249,4 +249,25 @@ $expected = {
 $got = $obj->counts->{$filename};
 is_deeply $got, $expected, 'counts';
 
+$filename = 't/5.txt';
+
+$obj = new_ok 'Text::TFIDF::Ngram' => [
+    files => [$filename],
+    size => 2,
+    stopwords => 0,
+    lowercase => 1,
+];
+$expected = {
+  'as snow'      => 1,
+  'fleece was'   => 1,
+  "had'a little" => 1,
+  'its fleece'   => 1,
+  'little lamb'  => 1,
+  "mary had'a"   => 1,
+  'was white'    => 1,
+  'white as'     => 1,
+};
+$got = $obj->counts->{$filename};
+is_deeply $got, $expected, 'counts';
+
 done_testing();
