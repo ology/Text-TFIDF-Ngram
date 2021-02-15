@@ -68,7 +68,7 @@ if ( $opts{top} ) {
 
             last if ++$n > $opts{top};
 
-            printf "\t%d. %s = %.10f\n", $n, $p, $x->{$file}{$p};
+            printf "\t%d. %.10f = %s\n", $n, $x->{$file}{$p}, $p;
         }
     }
 }
