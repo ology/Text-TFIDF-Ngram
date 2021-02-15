@@ -1,6 +1,7 @@
 Revision history for Text-TFIDF-Ngram
 
 {{$NEXT}}
+    - Whoops! Fix excluded character!
 
 0.0506 2021-02-15 07:36:29
     - Improve documentation.
