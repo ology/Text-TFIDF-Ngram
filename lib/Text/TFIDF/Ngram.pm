@@ -2,7 +2,7 @@ package Text::TFIDF::Ngram;
 
 # ABSTRACT: Compute the TF-IDF measure for ngram phrases
 
-our $VERSION = '0.0508';
+our $VERSION = '0.0509';
 
 use strictures 2;
 use Carp;
