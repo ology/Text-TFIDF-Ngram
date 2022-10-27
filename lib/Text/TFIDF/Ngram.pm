@@ -4,14 +4,13 @@ package Text::TFIDF::Ngram;
 
 our $VERSION = '0.0508';
 
-use Moo;
 use strictures 2;
-use namespace::clean;
-
 use Carp;
 use Lingua::EN::Ngram;
 use Lingua::StopWords qw( getStopWords );
 use List::Util qw( sum0 );
+use Moo;
+use namespace::clean;
 
 =head1 SYNOPSIS
 
